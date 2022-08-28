@@ -1,0 +1,79 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 30 px;
+    background-color: #493df0;
+    padding: 10px;
+  }
+  
+  .grid-container > div {
+    background-color: #ffd182;;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+  }
+  
+  .AcrossPage {
+    grid-column-start: 1;
+    grid-column-end: 4;
+  }
+  
+  .OneThirdsPage{
+    grid-column-start: 1;
+    grid-column-end: 2;
+  }
+  
+  .TwoThirdsPage{
+    grid-column-start: 2;
+    grid-column-end: 4;
+  }
+  
+  
+  #Title{
+    font-size : 30px;
+  }
+  #subheading{
+    font-size : 15px;
+  }
+  #question{
+    font-size : 20px;
+  }
+  
+  input[type=text], select {
+    width: 95%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  
+  .generator {
+      color: black;
+      background-color: rgb(242, 156, 7);
+      border: none;
+      border-radius: 3px;
+      width: 100px;
+      height: 50px;
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      box-shadow: 5px 5px 5px gray;
+      cursor: pointer;
+      
+  
+  }
+  
+  .generator:hover {
+      opacity: 0.8;
+  }
+  
+  .generator:active {
+      opacity: 0.5;
+      box-shadow:  none;
+      margin-left: 5px;
+      margin-top: 5px; 
+  }

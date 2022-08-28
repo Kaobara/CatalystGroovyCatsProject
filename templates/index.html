@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 30 px;
+    background-color: #493df0;
+    padding: 10px;
+  }
+  
+  .grid-container > div {
+    background-color: #ffd182;;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+  }
+  
+  .AcrossPage {
+    grid-column-start: 1;
+    grid-column-end: 4;
+  }
+  
+  .OneThirdsPage{
+    grid-column-start: 1;
+    grid-column-end: 2;
+  }
+  
+  .TwoThirdsPage{
+    grid-column-start: 2;
+    grid-column-end: 4;
+  }
+  
+  
+  #Title{
+    font-size : 30px;
+  }
+  #subheading{
+    font-size : 15px;
+  }
+  #question{
+    font-size : 20px;
+  }
+  
+  input[type=text], select {
+    width: 95%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  
+  .generator {
+      color: black;
+      background-color: rgb(242, 156, 7);
+      border: none;
+      border-radius: 3px;
+      width: 100px;
+      height: 50px;
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      box-shadow: 5px 5px 5px gray;
+      cursor: pointer;
+      
+  
+  }
+  
+  .generator:hover {
+      opacity: 0.8;
+  }
+  
+  .generator:active {
+      opacity: 0.5;
+      box-shadow:  none;
+      margin-left: 5px;
+      margin-top: 5px; 
+  }
+
+  .caseformat {
+  font-size: 20px;
+  }
+  </style>
+</head>
+
+<body>
+
+  <div class="grid-container">
+    <div class="AcrossPage">
+      <h1 id="Title" style="font-family: courier;">The Unique Name Machine<br></h1>
+      <p id="subheading">By The Groovy Cats</p>
+
+    </div>
+    <div class="AcrossPage">
+      <p style="font-size: 20;">Introduction</p>
+      <br>
+    </div>
+    <div class="AcrossPage">
+      <form action="/submit" method=post>
+        <label for="namef" style="font-size: 23px;"> Name format<br> </label>
+        <input type="text" id="namef" name="nameformat"placeholder="E.g. The {adjective} {noun}"><br>
+        
+        <label for="blacklist" style="font-size: 23px;">Black list </label><br>
+        <input type="text" id="blacklist" name="blacklist" placeholder="E.g. cats, dogs, animals">
+      <br> 
+        <label for="CaseFormat" style="font-size: 23px;">Case Format </label><br>
+        
+        <input type="radio" id="AllCase" name="CaseFormat" value="allcase">
+        <label for="AllCase" class = "caseformat">All Case</label>
+        <input type="radio" id="UpperCase" name="CaseFormat" value="uppercase">
+        <label for="UpperCase" class = "caseformat">Upper Case</label>
+        <input type="radio" id="LowerCase" name="CaseFormat" value="lowercase">
+        <label for="LowerCase" class = "caseformat">Lower Case</label><br>
+
+         <label for="AddNumbers" style="font-size: 23px;">Add Numbers? </label><br>
+
+         <input type="radio" id="True" name="AddNumbers" value="True">
+         <label for="True" class = "caseformat">True</label>
+         <input type="radio" id="False" name="AddNumbers" value="False">
+         <label for="False" class = "caseformat">False</label><br>
+
+         <label for="Symbols" style="font-size: 23px;">Symbol to include? </label><br>
+         <input type="text" id="Symbols" name="Symbol"placeholder="Add a symbol"><br>
+        
+        <input type="submit" class="generator" value="Submit">
+          
+      </form>
+</div>
+    
+  </div>
+</body>
+
+</html>
