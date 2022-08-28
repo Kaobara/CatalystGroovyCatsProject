@@ -21,12 +21,12 @@ DEFAULT = '{default}'
 NOUN = 1
 ADJ = 0
 MAX_RANDOM = 1000
-# ALL_CAPS
-# UPPERCASE
-# LOWERCASE
+ALL_CAPS = "allcase"
+UPPERCASE = "uppercase"
+LOWERCASE = "lowercase"
 
 
-NOUN_LIST = "animalList.csv"
+NOUN_LIST = "nounlist.csv"
 ADJ_LIST = "english-adjectives.csv"
 
 def randomWord(filename):
@@ -64,7 +64,7 @@ def backend(nameFormat, blackList, caseFormat, addNumbers, symbolInclude):
     formatPunct2Space = re.sub(r'[^A-z\s{}]', ' ', formatListInitial)
     formatNoSpaceAlt = re.sub(r'\s+', ' ', formatPunct2Space)
     formatListAdjective = re.sub(r"{[aA]+[dD]+[jJ]+[A-z]*}", "{adj}", formatNoSpaceAlt)
-    formatListNoun = re.sub(r"{[nN][oO][uU][nN]}", "{noun}", formatListAdjective)
+    formatListNoun = re.sub(r"{[nN]+[oO]+[uU]+[nN]+}", "{noun}", formatListAdjective)
     formatList = formatListNoun.split()
     print(formatList)
 
@@ -152,21 +152,20 @@ def backend(nameFormat, blackList, caseFormat, addNumbers, symbolInclude):
     finalWordList = []
 
     # Change the format of the words depending on the option of the user (lower case, upper case, and capitalization)
-    if(capitalBool == "All Caps"):
+    if(capitalBool == UPPERCASE):
         for word in wordList:
             print(word)
             finalWordList.append(word.upper())
-    elif(capitalBool == "Lowercase"):
+    elif(capitalBool == LOWERCASE):
         for word in wordList:
             finalWordList.append(word.lower())
-    elif(capitalBool == "Capitalize"):
+    elif(capitalBool == ALL_CAPS):
         for word in wordList:
             finalWordList.append(word.capitalize())
 
             
     if(RNG == "True"): finalWordList.append(str(random.randint(0, MAX_RANDOM)))
 
-    print("final list: " + seperator.join(finalWordList))
     return seperator.join(finalWordList)
 
 # if __name__ == "__main__":

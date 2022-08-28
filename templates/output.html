@@ -98,41 +98,14 @@
 
     </div>
     <div class="AcrossPage">
-      <p style="font-size: 20;">A useful tool helps you with a fancy username</p>
+      <p style="font-size: 20;">{{ Username }}</p>
       <br>
     </div>
     <div class="AcrossPage">
-      <form action="/submit" method=post>
-        <label for="namef" style="font-size: 23px;"> Name format<br> </label>
-        <input type="text" id="namef" name="nameformat" value="The {adjective} {noun}"><br>
-        
-        <label for="blacklist" style="font-size: 23px;">Black list </label><br>
-        <input type="text" id="blacklist" name="blacklist" value=" cats, dogs, animals">
-      <br> 
-        <label for="CaseFormat" style="font-size: 23px;">Case Format </label><br>
-        
-        <input type="radio" id="AllCase" name="CaseFormat" value="allcase" checked="checked">
-        <label for="AllCase" class = "caseformat">All Case</label>
-        <input type="radio" id="UpperCase" name="CaseFormat" value="uppercase">
-        <label for="UpperCase" class = "caseformat">Upper Case</label>
-        <input type="radio" id="LowerCase" name="CaseFormat" value="lowercase">
-        <label for="LowerCase" class = "caseformat">Lower Case</label><br>
-
-         <label for="AddNumbers" style="font-size: 23px;">Add Numbers? </label><br>
-
-         <input type="radio" id="True" name="AddNumbers" value="True" checked="checked">
-         <label for="True" class = "caseformat">True</label>
-         <input type="radio" id="False" name="AddNumbers" value="False">
-         <label for="False" class = "caseformat">False</label><br>
-
-         <label for="Symbols" style="font-size: 23px;">Symbol to include? </label><br>
-         <input type="text" id="Symbols" name="Symbol" value="_"><br>
-        
-        <input type="submit" class="generator" value="Submit">
-          
-      </form>
-</div>
-    
+    <form>
+      <input type="submit" class="generator" value="Back">
+    </form>
+    </div>
   </div>
 </body>
 

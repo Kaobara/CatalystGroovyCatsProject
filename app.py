@@ -11,16 +11,18 @@ def welcome():
 
 @app.route('/submit', methods=['POST'])
 def base_page():
-    print(request.form)
     data = request.form
     namefm = data['nameformat']
     bll = data['blacklist']
     casef = str(data['CaseFormat'])
     addnum = data['AddNumbers']
     symbol = str(data['Symbol'])
-        
-    print(type(namefm))
-    print(namefm)
+
     result = backend(namefm, bll, casef, addnum, symbol)
     print(result)
+    return render_template("output.html", Username=result)
+
+@app.route('/submit')
+
+def return_start():
     return render_template("index.html")
