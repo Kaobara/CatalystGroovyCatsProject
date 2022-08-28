@@ -1,3 +1,4 @@
+from audioop import add
 from genericpath import exists
 import os
 import string
@@ -15,7 +16,7 @@ from nltk.stem import WordNetLemmatizer
 import re
 
 POSSIBLE_FORMATS = ["{adj}", "{noun}"]
-DEFAULT = ''
+DEFAULT = '{default}'
 
 NOUN = 1
 ADJ = 0
@@ -36,25 +37,33 @@ def randomWord(filename):
     randomWord = randomRow.pop()
     return randomWord
 
-def main():
+def backend(nameFormat, blackList, caseFormat, addNumbers, symbolInclude):
     args = sys.argv
     lemmatizer = WordNetLemmatizer()
 
+    print(nameFormat + " " + blackList + " " + caseFormat + " " + addNumbers + " " + symbolInclude)
+
     
     
+
+    # # Check if given default or specific format
+    # if args[1] == DEFAULT : formatListInitial = "The {adj} {noun}"
+    # else: formatListInitial = args[1]
+
+    # blackListedWordsInitial = args[2].lower()
 
     # Check if given default or specific format
-    if args[1] == DEFAULT : formatListInitial = "The {adj} {noun}"
-    else: formatListInitial = args[1]
+    if nameFormat == DEFAULT : formatListInitial = "The {adj} {noun}"
+    else: formatListInitial = nameFormat
 
-    blackListedWordsInitial = args[2].lower()
+    blackListedWordsInitial = blackList.lower()
 
     # Text Pre Processing
 
     # Remove any symbols from blacklisted and formated word list
     formatPunct2Space = re.sub(r'[^A-z\s{}]', ' ', formatListInitial)
     formatNoSpaceAlt = re.sub(r'\s+', ' ', formatPunct2Space)
-    formatListAdjective = re.sub(r"{[aA][dD][jJ][A-z]*}", "{adj}", formatNoSpaceAlt)
+    formatListAdjective = re.sub(r"{[aA]+[dD]+[jJ]+[A-z]*}", "{adj}", formatNoSpaceAlt)
     formatListNoun = re.sub(r"{[nN][oO][uU][nN]}", "{noun}", formatListAdjective)
     formatList = formatListNoun.split()
     print(formatList)
@@ -63,16 +72,25 @@ def main():
     blNoSpaceAlt = re.sub(r'\s+', ' ', blPunct2Space)
     blackListedWords = blNoSpaceAlt.split()
 
-    # Style of word
-    capitalBool = args[3]
+    # # Style of word
+    # capitalBool = args[3]
+
+    # # separator between words
+    # if len(args)-1 < 4: seperator = ''
+    # else: seperator = args[4]
+
+    # # true false for random number generator
+    # if len(args)-1 < 5: RNG = False
+    # else: RNG = args[5]
+
+     # Style of word
+    capitalBool = caseFormat
 
     # separator between words
-    if len(args)-1 < 4: seperator = ''
-    else: seperator = args[4]
+    seperator = symbolInclude
 
     # true false for random number generator
-    if len(args)-1 < 5: RNG = False
-    else: RNG = args[5]
+    RNG = addNumbers
 
 
 
@@ -106,6 +124,7 @@ def main():
     # If random word is blacklisted, choose a new random word
     finalFormats = {}
     for formatOption in formatChoice.keys():
+        print(formatOption)
         if(formatChoice.get(formatOption) == POSSIBLE_FORMATS[NOUN]):
             randomNoun = randomWord(NOUN_LIST)
             while(randomNoun in processedBlackListedWords):
@@ -118,6 +137,7 @@ def main():
                 randomAdj = randomWord(ADJ_LIST)
             finalFormats.update([(formatOption, randomAdj)])
     
+    for words in finalFormats.keys(): print(words)
     # Append all the words into the final word list/string
 
     i = 0
@@ -134,6 +154,7 @@ def main():
     # Change the format of the words depending on the option of the user (lower case, upper case, and capitalization)
     if(capitalBool == "All Caps"):
         for word in wordList:
+            print(word)
             finalWordList.append(word.upper())
     elif(capitalBool == "Lowercase"):
         for word in wordList:
@@ -145,8 +166,9 @@ def main():
             
     if(RNG == "True"): finalWordList.append(str(random.randint(0, MAX_RANDOM)))
 
-    print(seperator.join(finalWordList))
+    print("final list: " + seperator.join(finalWordList))
+    return seperator.join(finalWordList)
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     ba()
 
